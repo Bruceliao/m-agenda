@@ -1,18 +1,32 @@
 {
   "name": "m-agenda",
-  "version": "1.0.0",
-  "description": "<p align=\"center\">   <img src=\"https://cdn.rawgit.com/agenda/agenda/master/agenda.svg\" alt=\"Agenda\" width=\"100\" height=\"100\"> </p> <p align=\"center\">   A light-weight job scheduling library for Node.js </p> <p align=\"center\">   <a href=\"https://slackin-ekwifvcwbr.now.sh/\"><img src=\"https://slackin-ekwifvcwbr.now.sh/badge.svg\" alt=\"Slack Status\"></a>   <a href=\"http://travis-ci.org/agenda/agenda\"><img src=\"https://api.travis-ci.org/agenda/agenda.svg\" alt=\"Build Status\"></a>   <a href=\"https://david-dm.org/agenda/agenda\"><img src=\"https://david-dm.org/agenda/agenda/status.svg\" alt=\"dependencies Status\"></a>   <a href=\"https://david-dm.org/agenda/agenda?type=dev\"><img src=\"https://david-dm.org/agenda/agenda/dev-status.svg\" alt=\"devDependencies Status\"></a>   <a href=\"https://coveralls.io/github/agenda/agenda?branch=master\"><img src=\"https://coveralls.io/repos/github/agenda/agenda/badge.svg?branch=master\" alt=\"Coverage Status\"></a> \t<br> \t<br> \t<br> </p>",
+  "version": "1.0.3",
+  "description": "Light weight job scheduler for Node.js",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "files": [
+    "lib"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint && npm run mocha",
+    "lint": "xo --verbose",
+    "mocha": "mocha --reporter spec --timeout 8000 -b",
+    "blanket": {
+      "pattern": "lib",
+      "data-cover-never": "node_modules"
+    }
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Bruceliao/m-agenda.git"
+    "type": "git"
   },
+  "keywords": [
+    "job",
+    "jobs",
+    "cron",
+    "delayed",
+    "scheduler",
+    "runner"
+  ],
+  "license": "MIT",
   "dependencies": {
     "cron": "~1.3.0",
     "date.js": "~0.3.2",
@@ -31,10 +45,24 @@
     "q": "^1.5.0",
     "xo": "^0.18.2"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Bruceliao/m-agenda/issues"
-  },
-  "homepage": "https://github.com/Bruceliao/m-agenda#readme"
+  "xo": {
+    "space": 2,
+    "rules": {
+      "space-before-function-paren": [
+        "error",
+        "never"
+      ],
+      "max-params": [
+        "error",
+        5
+      ],
+      "max-nested-callbacks": [
+        "error",
+        5
+      ]
+    },
+    "envs": [
+      "node"
+    ]
+  }
 }
